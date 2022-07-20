@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
         registryCredential = 'dockerhub'
-        imageName = 'beachcoder/internal'
+        imageName = 'sreeram12345/internal'
         dockerImage = ''
         }
     stages {
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Retrieve source from github' 
                 git branch: 'master',
-                    url: 'https://github.com/beachedcoder/2022_6_27_devops_internal.git'
+                    url: 'https://github.com/ramettan/internal-app.git'
                 echo 'showing files from repo?' 
                 sh 'ls -a'
                 echo 'install dependencies' 
@@ -27,7 +27,7 @@ pipeline {
                 echo 'Testing completed'
             }
         }
-        stage('Building image') {
+      /*  stage('Building image') {
             steps{
                 script {
                     echo 'building image' 
@@ -67,6 +67,6 @@ pipeline {
                 // sh "docker rmi $imageName:latest"
                 sh "docker rmi -f ${env.imageName}:${env.BUILD_ID}"
             }
-        }
+        }*/
     }
 }
