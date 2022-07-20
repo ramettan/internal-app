@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
                 echo 'Retrieve source from github' 
-                git branch: 'master',
+                git branch: 'main',
                     url: 'https://github.com/ramettan/internal-app.git'
                 echo 'showing files from repo?' 
                 sh 'ls -a'
