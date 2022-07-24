@@ -5,7 +5,7 @@ pipeline {
         imageName = 'sreeram12345/internal'
         dockerImage = ''
         }
-    options { skipDefaultCheckout() }
+   
     stages {
         stage('Run the tests') {
             
