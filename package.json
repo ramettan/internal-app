@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "nyc --temp-dir=tmp mocha --exit"
+    "test": "mocha --recursive --reporter mocha-junit-reporter --timeout 60000 --exit"
   },
   "keywords": [],
   "author": "",
