@@ -8,7 +8,7 @@ pipeline {
     options { skipDefaultCheckout() }
     stages {
         stage('Run the tests') {
-            }
+            
             steps {
                 echo 'Retrieve source from github' 
                 git branch: 'main',
