@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha 'test/**/*.js' --recursive --timeout 60000 --exit"
-    
-    mocha 'test/**/*.js'
+   
   },
   "keywords": [],
   "author": "",
