@@ -25,10 +25,11 @@ pipeline {
                 echo 'Run tests'
                 sh 'npm test'
                 echo 'Testing completed'
+                sh 'ls -a'
                 
             }
         }
-        stage('Building image') {
+      /*  stage('Building image') {
             steps{
                 script {
                     echo 'building image' 
@@ -37,7 +38,7 @@ pipeline {
                 }
             }
             }
-      /*  stage('Push Image') {
+        stage('Push Image') {
             steps{
                 script {
                     echo 'pushing the image to docker hub' 
