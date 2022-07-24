@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
                 echo 'Retrieve source from github' 
-            /*    git branch: 'main',
+                git branch: 'main',
                     url: 'https://github.com/ramettan/internal-app.git'
                 echo 'showing files from repo?' 
                 sh 'ls -a'
@@ -25,10 +25,10 @@ pipeline {
                 echo 'Run tests'
                 sh 'npm test'
                 echo 'Testing completed'
-                */
+                
             }
         }
-      /*  stage('Building image') {
+        stage('Building image') {
             steps{
                 script {
                     echo 'building image' 
@@ -37,7 +37,7 @@ pipeline {
                 }
             }
             }
-        stage('Push Image') {
+      /*  stage('Push Image') {
             steps{
                 script {
                     echo 'pushing the image to docker hub' 
