@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha -r ts-node/register 'tests/**/*.ts'"
+    "test": "mocha 'test/**/*.js' --recursive --timeout 60000 --exit"
+    
+    mocha 'test/**/*.js'
   },
   "keywords": [],
   "author": "",
