@@ -26,16 +26,7 @@ pipeline {
             }
         }
         
-        
-        stage('Build and push'){
-            steps {
-            
-            
-            
-            
-            }
-        
-        }
+       
         
         stage('Building image') {
             steps{
