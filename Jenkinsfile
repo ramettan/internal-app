@@ -13,18 +13,18 @@ pipeline {
                 echo 'showing files from repo?' 
                 sh 'ls -a'
                 echo 'install dependencies' 
-               /* sh 'npm install'
+                sh 'npm install'
                 echo 'Run tests'
                 sh 'npm test'
                 echo 'Testing completed'
-                sh 'ls -a' */
+                sh 'ls -a' 
                 
             }
         }
         
        
         
-/*        stage('Building image') {
+        stage('Building image') {
             steps{
                 script {
                     echo 'building image' 
@@ -44,7 +44,7 @@ stage ('Docker push'){
             """
             }
         }
-    }    */
+    }    
         stage('deploy to k8s') {
              agent {
                 docker { 
