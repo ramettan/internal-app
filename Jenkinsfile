@@ -25,6 +25,18 @@ pipeline {
                 
             }
         }
+        
+        
+        stage('Build and push'){
+            steps {
+            
+            
+            
+            
+            }
+        
+        }
+        
         stage('Building image') {
             steps{
                 script {
@@ -34,17 +46,19 @@ pipeline {
                 }
             }
             }
-      /*  stage('Push Image') {
-            steps{
-                script {
-                    echo 'pushing the image to docker hub' 
-                    docker.withRegistry('',registryCredential){
-                        dockerImage.push("${env.BUILD_ID}")
-                    }
-                }
+stage ('Docker push'){
+        steps{
+            withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'docker_password', usernameVariable: 'docker_user')]){
+            sh"""
+            docker build -t ${docker_user}/internal:${BUILD_NUMBER} .
+            docker login -u ${docker_user} -p ${docker_password}
+            docker push ${docker_user}/hello-world:${BUILD_NUMBER} >&1 | tee docker.txt
+            
+            """
             }
-        }     
-         stage('deploy to k8s') {
+        }
+    }    
+     /*    stage('deploy to k8s') {
              agent {
                 docker { 
                     image 'google/cloud-sdk:latest'
