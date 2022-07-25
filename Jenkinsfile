@@ -52,7 +52,7 @@ stage ('Docker push'){
             sh"""
             docker build -t ${docker_user}/internal:${BUILD_NUMBER} .
             docker login -u ${docker_user} -p ${docker_password}
-            docker push ${docker_user}/hello-world:${BUILD_NUMBER} >&1 | tee docker.txt
+            docker push ${docker_user}/internal:${BUILD_NUMBER} >&1 | tee docker.txt
             
             """
             }
