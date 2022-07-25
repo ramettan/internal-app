@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: internal-contianer
-        image: sreeram12345/internal:44
+        image: sreeram12345/internal:${BUILD_NUMBER}
         resources:
           requests:
             memory: "32Mi"
