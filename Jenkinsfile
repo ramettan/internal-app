@@ -69,7 +69,7 @@ stage ('Docker push'){
                 pwd
                 ls -l
                 echo "replacing image tag"
-                sed -i 's|${BUILD_NUMBER}|'"${BUILD_NUMBER}"'|g' internal-deployment.yml
+                sed -i 's|${BUILD_NUMBER}|'"${BUILD_NUMBER}"'|g' internal-deployment.yaml
                 cat internal-deployment.yaml
                 cat internal-service.yaml
                 
