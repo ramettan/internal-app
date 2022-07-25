@@ -1,11 +1,7 @@
 pipeline {
     agent any 
     tools {nodejs "nodejs"}
-    environment {
-        registryCredential = 'dockerhub'
-        imageName = 'sreeram12345/internal'
-        dockerImage = ''
-        }
+
    
     stages {
         stage('Run the tests') {
@@ -41,9 +37,9 @@ stage ('Docker push'){
         steps{
             withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'docker_password', usernameVariable: 'docker_user')]){
             sh"""
-            docker build -t ${docker_user}/internal:${BUILD_NUMBER} .
+            docker build -t ${docker_user}/external:${BUILD_NUMBER} .
             docker login -u ${docker_user} -p ${docker_password}
-            docker push ${docker_user}/internal:${BUILD_NUMBER} >&1 | tee docker.txt
+            docker push ${docker_user}/external:${BUILD_NUMBER} >&1 | tee docker.txt
             
             """
             }
