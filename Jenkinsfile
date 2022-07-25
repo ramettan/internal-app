@@ -13,22 +13,22 @@ pipeline {
                 echo 'showing files from repo?' 
                 sh 'ls -a'
                 echo 'install dependencies' 
-                sh 'npm install'
+               /* sh 'npm install'
                 echo 'Run tests'
                 sh 'npm test'
                 echo 'Testing completed'
-                sh 'ls -a'
+                sh 'ls -a' */
                 
             }
         }
         
        
         
-        stage('Building image') {
+/*        stage('Building image') {
             steps{
                 script {
                     echo 'building image' 
-                    dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
+                    dockerImage = docker.build("${env.imageName}:${BUILD_NUMBER}")
                     echo 'image built'
                 }
             }
@@ -44,8 +44,8 @@ stage ('Docker push'){
             """
             }
         }
-    }    
-     /*    stage('deploy to k8s') {
+    }    */
+        stage('deploy to k8s') {
              agent {
                 docker { 
                     image 'google/cloud-sdk:latest'
@@ -55,12 +55,31 @@ stage ('Docker push'){
                     }
             steps {
                 echo 'Get cluster credentials'
-                sh 'gcloud container clusters get-credentials demo-cluster --zone us-central1-c --project roidtc-june22-u100'
-                sh "kubectl set image deployment/internal-deployment events-internal=${env.imageName}:${env.BUILD_ID} --namespace=events"
+                sh '''
+                gcloud container clusters get-credentials my-app-cluster --zone us-central1-c --big-quanta-356212
+                pwd
+                ls
+                echo "create a temporary folder for storing manifest"
+                mkdir tmp
+                cp  ./yaml/* ./tmp
+                cd tmp
+                pwd
+                ls -l
+                echo "replacing image tag"
+                sed -i 's|${BUILD_NUMBER}|'"${BUILD_NUMBER}"'|g' internal-deployment.yml
+                cat internal-deployment.yaml
+                cat internal-service.yaml
+                
+               # kubectl apply -f yaml/internal-deployment.yaml
+               # kubectl apply -f yaml/internal-service.yaml
+               
+                
+                '''
+                
 
              }
         }     
-        stage('Remove local docker image') {
+       /* stage('Remove local docker image') {
             steps{
                 echo "pending"
                 // sh "docker rmi $imageName:latest"
