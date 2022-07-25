@@ -60,9 +60,12 @@ stage ('Docker push'){
                 pwd
                 ls
                 echo "create a temporary folder for storing manifest"
-                mkdir tmp
-                cp  ./yaml/* ./tmp
-                cd tmp
+                tmp_dir="tmp-vars-${BUILD_NUMBER}"
+                echo $tmp_dir
+				mkdir -p ${tmp_dir}
+                
+                cp  ./yaml/* ./${tmp_dir}
+                cd ${tmp_dir}
                 pwd
                 ls -l
                 echo "replacing image tag"
