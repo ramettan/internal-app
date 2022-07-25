@@ -56,7 +56,7 @@ stage ('Docker push'){
             steps {
                 echo 'Get cluster credentials'
                 sh '''
-                gcloud container clusters get-credentials my-app-cluster --zone us-central1-c --big-quanta-356212
+                gcloud container clusters get-credentials my-app-cluster --zone us-central1-c --project big-quanta-356212
                 pwd
                 ls
                 echo "create a temporary folder for storing manifest"
