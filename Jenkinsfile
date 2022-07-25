@@ -73,8 +73,8 @@ stage ('Docker push'){
                 cat internal-deployment.yaml
                 cat internal-service.yaml
                 
-               # kubectl apply -f yaml/internal-deployment.yaml
-               # kubectl apply -f yaml/internal-service.yaml
+                kubectl apply -f yaml/internal-deployment.yaml
+                kubectl apply -f yaml/internal-service.yaml
                
                 
                 '''
