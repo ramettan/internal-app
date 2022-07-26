@@ -34,7 +34,7 @@ stage('Sonarqube') {
 
 	withSonarQubeEnv('sonarqube') {
 
-	sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devops -Dsonar.sources=.  -Dsonar.host.url=http://http://35.211.119.134:9000"
+	sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devops -Dsonar.sources=.  -Dsonar.host.url=http:35.211.119.134:9000"
 
 	}
 
