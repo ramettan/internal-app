@@ -34,7 +34,7 @@ stage('Sonarqube') {
 
 	withSonarQubeEnv('sonarqube') {
 
-	sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devops"
+	sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devops -Dsonar.source=sonar-project.js"
 
 	}
 
