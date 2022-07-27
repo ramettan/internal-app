@@ -92,9 +92,18 @@ stage ('Docker push'){
                 sed -i 's|${BUILD_NUMBER}|'"${BUILD_NUMBER}"'|g' internal-deployment.yaml
                 cat internal-deployment.yaml
                 cat internal-service.yaml
-                
-                kubectl apply -f internal-deployment.yaml
-                kubectl apply -f internal-service.yaml
+		
+		kubectl apply -f internal-service.yaml
+              
+		OUT=$(kubectl get deployment | grep internal | awk '{print $1}')
+      		echo $OUT
+		
+	      if [ $OUT = "internal-deployment" ]; then
+               kubectl replace -f internal-deployment.yaml
+	       else
+	       kubectl apply -f internal-deployment.yaml
+	       
+               fi
                
                 
                 '''
